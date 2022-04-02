@@ -15,13 +15,13 @@ class GestionTaches extends Component  {
       this.handleDelete = this.handleDelete.bind(this);  
     };
     
-  handleChange(event) {
+  handleChange=(event) => {
   this.setState({inputValue: event.target.value});
   }
 
-  ajouter() {
+  ajouter=() => {
     
-   if(this.state.inputValue!="") {
+   if(this.state.inputValue!=="") {
 
      this.setState(prevState => ({
        tachesArr: [{id :this.state.tachesArr.length+1, value : this.state.inputValue}, ...prevState.tachesArr],
@@ -31,18 +31,16 @@ class GestionTaches extends Component  {
    }
   }
   
-  handleDelete(t) {
-    //alert('toto')
-    console.log("1 - "+this.state.tachesArr[0]);             /////// 1 [object Object],[object Object],[object Object]
-    console.log("2 - "+this.state.tachesArr[0].id);
-    console.log("3 - "+this.state.tachesArr[0].value);
+  handleDelete = (t) => {
+    
+    console.log("1 - "+this.state.tachesArr[0]);            
     const tachesArr = this.state.tachesArr.filter((x) => x.id !== t.id);
     this.setState({tachesArr : tachesArr});
-    //console.log("4 - "+this.state.tachesArr);
+    console.log("4 - "+this.state.tachesArr);
   };
 
   render() {
-    //console.log("5 - "+this.state.tachesArr);
+    console.log("5 - "+this.state.tachesArr);
 
     return (
       
@@ -71,7 +69,7 @@ class GestionTaches extends Component  {
                   this.state.tachesArr.map((tache) => (
                   <Tache 
                     key={tache.id} 
-                    value={tache.value} 
+                    tache={tache} 
                     onDelete={this.handleDelete}
                   />
                   ))

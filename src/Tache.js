@@ -5,15 +5,15 @@ import trash from './trash.png';
 
 
 
-function Tache(props) {
+function Tache({onDelete, tache}) {
   
   return (   
     <tr className="lignes">
       <td className="items">
-        {props.value}
+        {tache.value}
       </td>
       <td className="delete-item" >
-        <img className="poubelle" src={trash} onClick={props.onDelete} />
+        <img className="poubelle" src={trash} alt="" onClick={()=>onDelete(tache)} />
       </td>
     </tr>      
   );
